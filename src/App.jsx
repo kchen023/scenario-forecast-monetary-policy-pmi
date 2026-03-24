@@ -110,18 +110,17 @@ export default function App(){
   const themes=getThemes(tariff,inflation,fed);
   const DTABS=[{id:"geo",l:"Geopolitics"},{id:"eco",l:"Economy"},{id:"mon",l:"Monetary Policy"},{id:"fiscal",l:"Fiscal Policy"},{id:"chart",l:"Framework Check"}];
   return(
-    <div style={{background:"#fff",minHeight:"100vh",fontFamily:"Helvetica Neue, Arial, sans-serif",color:"#0a0a0a",fontSize:15,overflowX:"hidden",maxWidth:"100vw"}}></div>
+    <div style={{background:"#fff",minHeight:"100vh",fontFamily:"Helvetica Neue, Arial, sans-serif",color:"#0a0a0a",fontSize:15,overflowX:"hidden",maxWidth:"100vw"}}>
       <div style={{borderBottom:"3px solid #0a0a0a",padding:"16px 32px 0"}}>
-      <div style={{textAlign:"center",marginBottom:10}}>
-        <div style={{fontSize:11,letterSpacing:3,color:"#6b7280",fontWeight:700,marginBottom:8}}>SCENARIO FORECAST | MACRO RESEARCH | UPDATED MARCH 2026</div>
-        <h1 style={{margin:0,fontSize:22,fontWeight:700,letterSpacing:-0.3,lineHeight:1.3}}>Locked-In Legacies: How the 18-Month Monetary Lag Predetermines Presidential PMI Trajectories</h1>
-        <p style={{margin:"8px auto 0",fontSize:14,color:"#4b5563",maxWidth:640}}>Fed rate decisions precede PMI by 18 months - not changed by any of previous administrations (Obama I&II, Trump I, Biden).</p>
-      </div>
-        <div style={{display:"flex",gap:0,marginTop:40}}>
-          {["history","forecast"].map((id,idx)=><button key={id} onClick={()=>setNav(id)} style={{padding:"8px 24px",fontSize:13,fontWeight:700,letterSpacing:0.5,cursor:"pointer",border:"none",borderBottom:nav===id?"2px solid #0a0a0a":"2px solid transparent",background:"transparent",color:nav===id?"#0a0a0a":"#6b7280",textTransform:"uppercase"}}>{idx===0?"Part 1 · Historical Evidence":"Part 2 · Scenario Forecast 2026-27"}</button>)}
+        <div style={{textAlign:"center",marginBottom:10}}>
+          <div style={{fontSize:11,letterSpacing:3,color:"#6b7280",fontWeight:700,marginBottom:8}}>MACRO RESEARCH · MARCH 2026</div>
+          <h1 style={{margin:0,fontSize:24,fontWeight:700,letterSpacing:-0.3,lineHeight:1.3}}>Locked-In Legacies: How the 18-Month Monetary Lag Predetermines Presidential PMI Trajectories</h1>
+          <p style={{margin:"8px auto 0",fontSize:13,color:"#4b5563",maxWidth:640}}>Fed rate decisions precede economic outcomes by 18 months. Five administrations have not changed this.</p>
+        </div>
+        <div style={{display:"flex",gap:0,marginTop:16}}>
+          {["history","forecast"].map((id,idx)=><button key={id} onClick={()=>setNav(id)} style={{padding:"8px 24px",fontSize:11,fontWeight:700,letterSpacing:0.5,cursor:"pointer",border:"none",borderBottom:nav===id?"2px solid #0a0a0a":"2px solid transparent",background:"transparent",color:nav===id?"#0a0a0a":"#6b7280",textTransform:"uppercase"}}>{idx===0?"PART 1 · HISTORICAL EVIDENCE":"PART 2 · SCENARIO FORECAST 2026-27"}</button>)}
         </div>
       </div>
-
       {nav==="history"&&(
         <div style={{padding:"24px 32px"}}>
           <div style={{marginBottom:24}}>
@@ -243,6 +242,7 @@ export default function App(){
             </div>
           </div>
         </div>
+      </div>
       )}
       <div style={{borderTop:"1px solid #e5e7eb",padding:"12px 32px",fontSize:9,color:"#9ca3af",display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:4}}>
         <span>PMI: ISM Manufacturing · Yield: FRED GS10 10-Year Treasury · Joint probability = P(tariff) x P(inflation) x P(Fed)</span>
