@@ -233,7 +233,8 @@ export default function App(){
                 </div>
               </div>
               <div>
-                <div style={{fontSize:13,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:8}}>THEMATIC ANALYSIS MATRIX</div>
+                <div style={{fontSize:9,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:8}}>THEMATIC ANALYSIS MATRIX</div>
+                <div className="mobile-table-wrap">
                 <table style={{width:"100%",borderCollapse:"collapse",fontSize:10}}>
                   <thead><tr style={{background:"#0a0a0a",color:"#fff"}}>{["THEME","STATUS","KEY DRIVERS","TAIL RISK"].map(h=>(<th key={h} style={{padding:"6px 9px",textAlign:"center",fontWeight:700,width:h==="THEME"?"14%":h==="STATUS"?"10%":h==="KEY DRIVERS"?"48%":"28%"}}>{h}</th>))}</tr></thead>
                   <tbody>{themes.map((row,i)=>(<tr key={row.theme} style={{background:i%2===0?"#f9fafb":"#fff",borderBottom:"1px solid #e5e7eb"}}><td style={{padding:"7px 9px",fontWeight:700,verticalAlign:"top"}}>{row.theme}</td><td style={{padding:"7px 9px",verticalAlign:"top"}}><span style={{fontWeight:700,color:row.statusC,fontSize:9,background:row.statusC+"11",padding:"2px 5px",borderRadius:2,whiteSpace:"nowrap"}}>{row.status}</span></td><td style={{padding:"7px 8px",color:"#374151",verticalAlign:"top",lineHeight:1.55}}>{row.drivers}</td><td style={{padding:"7px 8px",color:"#6b7280",verticalAlign:"top",lineHeight:1.55,fontStyle:"italic"}}>{row.risk}</td></tr>))}</tbody>
