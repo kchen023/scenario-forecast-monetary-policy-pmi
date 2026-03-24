@@ -126,7 +126,7 @@ export default function App(){
         <div style={{padding:"24px 32px"}}>
           <div style={{marginBottom:24}}>
             <div style={{fontSize:13,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:12}}>CORE PRINCIPLES</div>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:14}}>
+            <div className="mobile-single" style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:14}}>
               {[{n:"01",h:"The Inherited Economy",b:"A president's first 1-3 years are macro-determined by the Fed's prior stance. Credit or blame assigned to presidents is largely misattributed to the wrong variable."},{n:"02",h:"Fiscal Is Not the Market Driver",b:"Presidential fiscal policy is NOT the primary driver of equity market performance. Monetary policy — the lagged effects of Fed rate cycles — predetermines economic outcomes long before a new president takes the oath."},{n:"03",h:"The Transmission Channel",b:"Fed tightening/easing (12-18 month lag) leads to LEIs/PMIs, then Business Cycle, then Equity Returns. Fiscal policy overlays this cycle but rarely overrides it."}].map(p=>(
                 <div key={p.n} style={{borderTop:"2px solid #0a0a0a",paddingTop:10}}>
                   <div style={{fontSize:11,letterSpacing:2,fontWeight:700,color:"#6b7280",marginBottom:4}}>PRINCIPLE {p.n}</div>
@@ -169,7 +169,7 @@ export default function App(){
           </div>
           <div>
             <div style={{fontSize:13,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:12,marginTop:40}}>PRESIDENTIALCASE STUDIES · CLICK TO EXPAND</div>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:10}}>
+            <div className="mobile-single" style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:10}}>
               {CASES.map(cs=>(<div key={cs.id} onClick={()=>setCase(activeCase===cs.id?null:cs.id)} style={{border:activeCase===cs.id?"1.5px solid #0a0a0a":"1px solid #e5e7eb",borderRadius:2,padding:"12px",cursor:"pointer",background:activeCase===cs.id?"#f9fafb":"#fff"}}>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:6}}>
                   <div><div style={{fontWeight:700,fontSize:12}}>{cs.title}</div><div style={{fontSize:9,color:"#9ca3af",marginTop:1}}>{cs.period}</div></div>
@@ -186,7 +186,7 @@ export default function App(){
         <div style={{padding:"24px 32px"}}>
           <div style={{fontSize:13,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:3,textAlign:"center"}}>PMI SCENARIO FORECAST · 2026-2027</div>
           <div style={{fontSize:13,color:"#4b5563",textAlign:"center",margin:"0 auto 18px auto",whiteSpace:"nowrap"}}>175bps of Fed cuts (Sep 2025-Dec 2025) delivered the pipeline-predicted V-shape (Dec-25 trough 47.9 to Mar-26: 52.3). Forward trajectory determined by three policy variables.</div>
-          <div style={{display:"grid",gridTemplateColumns:"260px 1fr",gap:40,alignItems:"start"}}>
+          <div className="mobile-stack" style={{display:"grid",gridTemplateColumns:"260px 1fr",gap:40,alignItems:"start"}}>
             <div>
               <TogRow label="Tariff Policy" opts={T_OPTS} val={tariff} set={setTariff}/>
               <TogRow label="Inflation Path" opts={I_OPTS} val={inflation} set={setInf}/>

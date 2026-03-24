@@ -109,3 +109,24 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+
+@media (max-width: 768px) {
+  /* 预测页左右两栏变成上下排列 */
+  .mobile-stack {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 三列卡片变成一列 */
+  .mobile-single {
+    grid-template-columns: 1fr !important;
+  }
+}
