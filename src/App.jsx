@@ -186,13 +186,13 @@ export default function App(){
           {/* Header section */}
           <div style={{borderBottom:"3px solid #0a0a0a",padding:"16px 0 0",boxSizing:"border-box"}}>
             <div style={{textAlign:"center",marginBottom:10}}>
-              <div style={{fontSize:15,letterSpacing:3,color:"#6b7280",fontWeight:700,marginBottom:8}}>MACRO RESEARCH · MARCH 2026</div>
+              <div style={{fontSize:15,letterSpacing:3,color:"#6b7280",fontWeight:700,marginBottom:8}}>SCENARIO FORECAST · MACRO RESEARCH · MARCH 2026</div>
               <h1 style={{margin:0,fontSize:24,fontWeight:700,letterSpacing:-0.3,lineHeight:1.3}}>Locked-In Legacies: How the 18-Month Monetary Lag Predetermines Presidential PMI Trajectories</h1>
-              <p style={{margin:"8px auto 0",fontSize:15,color:"#4b5563",maxWidth:800,lineHeight:1.5}}>Fed rate decisions precede economic outcomes by 18 months. Five administrations have not changed this.</p>
+              <p style={{margin:"8px auto 0",fontSize:15,color:"#4b5563",maxWidth:800,lineHeight:1.5}}>"Fed rate decisions precede economic outcomes by 18 months, which holds true for many administrations."</p>
             </div>
             
             {/* Top Navigation Tabs */}
-            <div style={{display:"flex",gap:8,marginTop:16,flexWrap:"wrap",justifyContent:"center"}}>
+            <div style={{display:"flex",gap:8,marginTop:48,flexWrap:"wrap",justifyContent:"center"}}>
               {["history","forecast"].map((id,idx)=>(
                 <button key={id} onClick={()=>setNav(id)} style={{padding:"8px 12px",fontSize:15,fontWeight:700,letterSpacing:0.5,cursor:"pointer",border:"none",borderBottom:nav===id?"2px solid #0a0a0a":"2px solid transparent",background:"transparent",color:nav===id?"#0a0a0a":"#6b7280",textTransform:"uppercase"}}>
                   {idx===0?"PART 1 · HISTORICAL EVIDENCE":"PART 2 · SCENARIO FORECAST 2026-27"}
@@ -219,7 +219,7 @@ export default function App(){
               
               {/* Main Chart Section */}
               <div style={{marginBottom:24}}>
-                <div style={{fontSize:15,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:6}}>THE MONETARY PIPELINE · 2008 - PRESENT</div>
+                <div style={{fontSize:15,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:6,marginTop:44}}>THE INAUGURATION OF PRESIDENT DID NOT CHANGE THE COURSE OF THE CYCLE (2008 - PRESENT)</div>
                 <div style={{display:"flex",flexWrap:"wrap",gap:16,marginBottom:8}}>
                   {HIST_LEGEND.map(l=>(<span key={l.label} style={{display:"flex",alignItems:"center",gap:6,fontSize:13,color:"#4b5563"}}><svg width="28" height="10"><line x1="0" y1="5" x2="28" y2="5" stroke={l.color} strokeWidth={l.dash?"1.5":"2"} strokeDasharray={l.dash||"none"}/></svg>{l.label}</span>))}
                 </div>
@@ -236,14 +236,14 @@ export default function App(){
                       <ReferenceLine yAxisId="yld" y={0} stroke="#d1d5db" strokeWidth={0.5}/>
                       {/* Increased Inauguration Label Font Size to 15, matching Medium level */}
                       {INAUGURATIONS.map(g=>(<ReferenceLine key={g.t} yAxisId="pmi" x={g.t} stroke={g.color} strokeWidth={1} strokeDasharray="4 3" strokeOpacity={0.75} label={{value:g.label,position:"insideTopLeft",fontSize:15,fill:g.color,dx:4,dy:-4}}/>))}
-                      <Line yAxisId="pmi" dataKey="pmi" stroke="#1565C0" strokeWidth={1.8} dot={false} isAnimationActive={false}/>
-                      <Line yAxisId="yld" dataKey="grey" stroke="#9ca3af" strokeWidth={1.5} strokeDasharray="6 3 1 3" dot={false} isAnimationActive={false}/>
-                      <Line yAxisId="yld" dataKey="red" stroke="#B71C1C" strokeWidth={1.8} strokeDasharray="6 3 1 3" dot={false} isAnimationActive={false}/>
+                      <Line yAxisId="pmi" dataKey="pmi" stroke="#1565C0" strokeWidth={2.5} dot={false} isAnimationActive={false}/>
+                      <Line yAxisId="yld" dataKey="grey" stroke="#9ca3af" strokeWidth={1.8} strokeDasharray="6 3 1 3" dot={false} isAnimationActive={false}/>
+                      <Line yAxisId="yld" dataKey="red" stroke="#B71C1C" strokeWidth={2.5} strokeDasharray="6 3 1 3" dot={false} isAnimationActive={false}/>
                     </ComposedChart>
                   </ResponsiveContainer>
                 </div>
                 <div style={{fontSize:13,color:"#9ca3af",marginTop:4,display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:4}}>
-                  <span>Vertical dashed lines = presidential inauguration</span>
+                  <span>Vertical dashed lines = presidential inauguration date</span>
                   <span>Right axis inverted</span>
                 </div>
               </div>
@@ -251,19 +251,19 @@ export default function App(){
               <div style={{borderLeft:"3px solid #0a0a0a",padding:"12px 16px",background:"#f9fafb",marginBottom:24}}>
                 {/* Replaced paragraph with Bullet Points List */}
                 <div style={{fontSize:13,lineHeight:1.75}}>
-                  <strong>Core finding:</strong>
+                  <strong>Core Finding:</strong>
                   <ul style={{margin: "8px 0 0 0", paddingLeft: 24}}>
-                    <li style={{marginBottom: 6}}><strong>The Inheritance Effect:</strong> A President’s early economic performance is primarily dictated by the Federal Reserve's prior actions, not their own fiscal initiatives.</li>
+                    <li style={{marginBottom: 6}}><strong>The Inheritance Effect:</strong> A President’s early economic performance is primarily predetermined by the Federal Reserve's prior actions, not their own fiscal initiatives.</li>
                     <li style={{marginBottom: 6}}><strong>The 18-Month Lag:</strong> Monetary policy operates with a significant lag; the economic trajectory for the first 1.5 years of a new term is "baked in" by the Fed long before inauguration.</li>
                     <li style={{marginBottom: 6}}><strong>PMI as the Proxy:</strong> The Purchasing Managers' Index (PMI) and Leading Economic Indicators (LEIs) serve as the primary trackers for this lag, reflecting interest rate trends set 18 months prior.</li>
-                    <li style={{marginBottom: 6}}><strong>Monetary Dominance:</strong> While fiscal measures like deregulation or defense spending take years to manifest, monetary tightening or easing can immediately overpower a President's short-term intentions.</li>
+                    <li style={{marginBottom: 6}}><strong>Monetary Dominance:</strong> While fiscal measures like deregulation/defense spending take years to manifest, monetary tightening/easing can immediately overpower a President's short-term intentions.</li>
                     <li><strong>Perception vs. Reality:</strong> This lag explains why Presidents are often unfairly credited or blamed for market performance that was actually set in motion by the previous administration's macro backdrop.</li>
                   </ul>
                 </div>
               </div>
               
               <div>
-                <div style={{fontSize:15,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:12,marginTop:40}}>PRESIDENTIAL CASE STUDIES</div>
+                <div style={{fontSize:15,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:12,marginTop:44}}>CASE STUDIES ACROSS PRESIDENTIAL ADMINISTRATIONS</div>
                 {/* CSS Grid replaces flex to guarantee 3 columns x 2 rows on PC */}
                 <div className="grid-3">
                   {CASES.map(cs=>(
@@ -286,9 +286,9 @@ export default function App(){
 
           {nav==="forecast"&&(
             <div style={{padding:"24px 0",boxSizing:"border-box",width:"100%"}}>
-              <div style={{fontSize:15,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:3,textAlign:"center"}}>PMI SCENARIO FORECAST · 2026-2027</div>
+              <div style={{fontSize:15,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:3,marginTop:24,textAlign:"center"}}>SCENARIO FORECAST ON PMI (2026-2027)</div>
               <div style={{fontSize:15,color:"#4b5563",textAlign:"center",margin:"0 auto 18px auto",lineHeight:1.5}}>
-                175bps of Fed cuts (Sep 2025-Dec 2025) delivered the pipeline-predicted V-shape. Forward trajectory determined by three policy variables.
+                "175bps of Fed cuts (Sep 2024-Dec 2025) delivered the pipeline-predicted V-shape. Forward trajectory determined by three policy variables."
               </div>
               
               {/* Uses the injected .grid-sidebar class for perfect PC proportions and mobile stacking */}
@@ -299,10 +299,10 @@ export default function App(){
                   <TogRow label="Inflation Path" opts={I_OPTS} val={inflation} set={setInf}/>
                   <TogRow label="Warsh / Fed Chair" opts={F_OPTS} val={fed} set={setFed}/>
                   
-                  <div style={{border:"1.5px solid "+scen.c,borderRadius:2,padding:12,background:scen.bg,marginTop:4}}>
-                    <div style={{fontSize:15,letterSpacing:1,color:"#6b7280",marginBottom:3,fontWeight:700}}>COMBINED SCENARIO</div>
-                    <div style={{fontSize:24,fontWeight:700,color:scen.c,marginBottom:10}}>{scen.name}</div>
-                    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:5,marginBottom:10}}>
+                  <div style={{border:"1.5px solid "+scen.c,borderRadius:2,padding:12,background:scen.bg,marginTop:44}}>
+                    <div style={{fontSize:15,letterSpacing:1,color:"#6b7280",marginBottom:10,fontWeight:700}}>COMBINED SCENARIO</div>
+                    <div style={{fontSize:24,fontWeight:700,color:scen.c,marginBottom:20}}>{scen.name}</div>
+                    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:5,marginBottom:44}}>
                       {[{l:"PMI Range",v:scen.range},{l:"Joint Prob.",v:"~"+prob+"%"},{l:"End-2027",v:endPMI.toFixed(1)},{l:"Net Shock",v:(total>=0?"+":"")+total.toFixed(1)+" pts"}].map(c=>(
                         <div key={c.l} style={{background:"rgba(255,255,255,0.7)",borderRadius:2,padding:"6px 8px",border:"1px solid #e5e7eb"}}>
                           <div style={{fontSize:13,color:"#6b7280",fontWeight:600}}>{c.l}</div>
@@ -363,7 +363,7 @@ export default function App(){
                   </div>
 
                   <div>
-                    <div style={{fontSize:15,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:8}}>THEMATIC ANALYSIS MATRIX</div>
+                    <div style={{fontSize:15,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:8,marginTop:40}}>THEMATIC ANALYSIS MATRIX</div>
                     <div style={{width:"100%", overflowX:"auto", WebkitOverflowScrolling:"touch", paddingBottom:8}}>
                       <table style={{width:"100%", minWidth: 500, borderCollapse:"collapse",fontSize:13}}>
                         <thead>
