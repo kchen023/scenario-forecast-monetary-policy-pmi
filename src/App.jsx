@@ -110,7 +110,7 @@ export default function App(){
   const themes=getThemes(tariff,inflation,fed);
   const DTABS=[{id:"geo",l:"Geopolitics"},{id:"eco",l:"Economy"},{id:"mon",l:"Monetary Policy"},{id:"fiscal",l:"Fiscal Policy"},{id:"chart",l:"Framework Check"}];
   return(
-    <div style={{background:"#fff",minHeight:"100vh",fontFamily:"Helvetica Neue, Arial, sans-serif",color:"#0a0a0a",fontSize:15}}>
+    <div style={{background:"#fff",minHeight:"100vh",fontFamily:"Helvetica Neue, Arial, sans-serif",color:"#0a0a0a",fontSize:15,overflowX:"hidden",maxWidth:"100vw"}}></div>
       <div style={{borderBottom:"3px solid #0a0a0a",padding:"16px 32px 0"}}>
       <div style={{textAlign:"center",marginBottom:10}}>
         <div style={{fontSize:11,letterSpacing:3,color:"#6b7280",fontWeight:700,marginBottom:8}}>SCENARIO FORECAST | MACRO RESEARCH | UPDATED MARCH 2026</div>
@@ -183,7 +183,7 @@ export default function App(){
       )}
 
       {nav==="forecast"&&(
-        <div style={{padding:"24px 32px"}}>
+        <div style={{padding:"24px 16px",overflowX:"hidden"}}>
           <div style={{fontSize:13,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:3,textAlign:"center"}}>PMI SCENARIO FORECAST · 2026-2027</div>
           <div style={{fontSize:13,color:"#4b5563",textAlign:"center",margin:"0 auto 18px auto",whiteSpace:"nowrap"}}>175bps of Fed cuts (Sep 2025-Dec 2025) delivered the pipeline-predicted V-shape (Dec-25 trough 47.9 to Mar-26: 52.3). Forward trajectory determined by three policy variables.</div>
           <div className="mobile-stack" style={{display:"grid",gridTemplateColumns:"260px 1fr",gap:40,alignItems:"start"}}>
