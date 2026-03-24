@@ -106,42 +106,39 @@ export default function App(){
   const prob=useMemo(()=>Math.max(1,Math.round(PROBS.tariff[tariff]*PROBS.inflation[inflation]*PROBS.fed[fed]*100)),[tariff,inflation,fed]);
   const fcast=useMemo(()=>FWD.map((label,i)=>{const t=i/(FWD.length-1);const tP=i<4?i/4*0.3:Math.min(1,0.3+(i-4)/5);const iP=Math.min(1,i/8);const fP=i<2?0:Math.min(1,(i-2)/6);const base=52.3+t*0.7+0.28*Math.sin(t*Math.PI*2.4+0.4);return{t:label,f:Math.round((base+tD*tP+iD*iP+fD*fP)*10)/10};}),[tD,iD,fD]);
   const endPMI=fcast[fcast.length-1].f;
-  const chartData=useMemo(()=>{const rec=HIST.slice(-14).map(d=>({t:d.t,h:d.pmi}));return[...rec,{t:"Mar-26",h:52.3,f:52.3},...fcast.map(d=>({t:d.t,f:d.f}))];},[fcast]);
+  const chartData=useMemo(()=>{const rec=HIST.slice(-27).map(d=>({t:d.t,h:d.pmi}));return[...rec,{t:"Mar-26",h:52.3,f:52.3},...fcast.map(d=>({t:d.t,f:d.f}))];},[fcast]);
   const themes=getThemes(tariff,inflation,fed);
   const DTABS=[{id:"geo",l:"Geopolitics"},{id:"eco",l:"Economy"},{id:"mon",l:"Monetary Policy"},{id:"fiscal",l:"Fiscal Policy"},{id:"chart",l:"Framework Check"}];
   return(
-    <div style={{background:"#fff",minHeight:"100vh",fontFamily:"Helvetica Neue, Arial, sans-serif",color:"#0a0a0a",fontSize:13}}>
+    <div style={{background:"#fff",minHeight:"100vh",fontFamily:"Helvetica Neue, Arial, sans-serif",color:"#0a0a0a",fontSize:15}}>
       <div style={{borderBottom:"3px solid #0a0a0a",padding:"16px 32px 0"}}>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",marginBottom:10}}>
-          <div>
-            <div style={{fontSize:9,letterSpacing:3,color:"#6b7280",fontWeight:700,marginBottom:5}}>MACRO RESEARCH · MARCH 2026</div>
-            <h1 style={{margin:0,fontSize:20,fontWeight:700,letterSpacing:-0.3,lineHeight:1.2}}>The Monetary Pipeline & PMI Outlook</h1>
-            <p style={{margin:"4px 0 0",fontSize:11,color:"#4b5563",maxWidth:480}}>Fed rate decisions precede economic outcomes by 18 months. Five administrations have not changed this.</p>
-          </div>
-          <div style={{textAlign:"right",fontSize:9,color:"#9ca3af",lineHeight:1.8}}><div>ISM PMI · FRED GS10 Treasury Series</div><div>Tax Foundation · Yale Budget Lab · MacroMicro</div></div>
-        </div>
-        <div style={{display:"flex",gap:0}}>
-          {["history","forecast"].map((id,idx)=><button key={id} onClick={()=>setNav(id)} style={{padding:"8px 24px",fontSize:11,fontWeight:700,letterSpacing:0.5,cursor:"pointer",border:"none",borderBottom:nav===id?"2px solid #0a0a0a":"2px solid transparent",background:"transparent",color:nav===id?"#0a0a0a":"#6b7280",textTransform:"uppercase"}}>{idx===0?"01 · Historical Evidence":"02 · 2026-27 Scenario Forecast"}</button>)}
+      <div style={{textAlign:"center",marginBottom:10}}>
+        <div style={{fontSize:11,letterSpacing:3,color:"#6b7280",fontWeight:700,marginBottom:8}}>SCENARIO FORECAST | MACRO RESEARCH | UPDATED MARCH 2026</div>
+        <h1 style={{margin:0,fontSize:22,fontWeight:700,letterSpacing:-0.3,lineHeight:1.3}}>Locked-In Legacies: How the 18-Month Monetary Lag Predetermines Presidential PMI Trajectories</h1>
+        <p style={{margin:"8px auto 0",fontSize:14,color:"#4b5563",maxWidth:640}}>Fed rate decisions precede PMI by 18 months - not changed by any of previous administrations (Obama I&II, Trump I, Biden).</p>
+      </div>
+        <div style={{display:"flex",gap:0,marginTop:40}}>
+          {["history","forecast"].map((id,idx)=><button key={id} onClick={()=>setNav(id)} style={{padding:"8px 24px",fontSize:13,fontWeight:700,letterSpacing:0.5,cursor:"pointer",border:"none",borderBottom:nav===id?"2px solid #0a0a0a":"2px solid transparent",background:"transparent",color:nav===id?"#0a0a0a":"#6b7280",textTransform:"uppercase"}}>{idx===0?"Part 1 · Historical Evidence":"Part 2 · Scenario Forecast 2026-27"}</button>)}
         </div>
       </div>
 
       {nav==="history"&&(
         <div style={{padding:"24px 32px"}}>
           <div style={{marginBottom:24}}>
-            <div style={{fontSize:9,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:12}}>CORE PRINCIPLES</div>
+            <div style={{fontSize:13,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:12}}>CORE PRINCIPLES</div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:14}}>
               {[{n:"01",h:"The Inherited Economy",b:"A president's first 1-3 years are macro-determined by the Fed's prior stance. Credit or blame assigned to presidents is largely misattributed to the wrong variable."},{n:"02",h:"Fiscal Is Not the Market Driver",b:"Presidential fiscal policy is NOT the primary driver of equity market performance. Monetary policy — the lagged effects of Fed rate cycles — predetermines economic outcomes long before a new president takes the oath."},{n:"03",h:"The Transmission Channel",b:"Fed tightening/easing (12-18 month lag) leads to LEIs/PMIs, then Business Cycle, then Equity Returns. Fiscal policy overlays this cycle but rarely overrides it."}].map(p=>(
                 <div key={p.n} style={{borderTop:"2px solid #0a0a0a",paddingTop:10}}>
-                  <div style={{fontSize:9,letterSpacing:2,fontWeight:700,color:"#6b7280",marginBottom:4}}>PRINCIPLE {p.n}</div>
-                  <div style={{fontSize:12,fontWeight:700,marginBottom:5}}>{p.h}</div>
+                  <div style={{fontSize:11,letterSpacing:2,fontWeight:700,color:"#6b7280",marginBottom:4}}>PRINCIPLE {p.n}</div>
+                  <div style={{fontSize:13,fontWeight:700,marginBottom:5}}>{p.h}</div>
                   <div style={{fontSize:11,color:"#4b5563",lineHeight:1.7}}>{p.b}</div>
                 </div>
               ))}
             </div>
           </div>
           <div style={{marginBottom:24}}>
-            <div style={{fontSize:9,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:2}}>THE MONETARY PIPELINE · 2008 - PRESENT</div>
-            <div style={{fontSize:10,color:"#4b5563",marginBottom:8}}>Monthly data · ISM PMI (left axis) · 10Y Treasury yield 2-year change (right axis, inverted)</div>
+            <div style={{fontSize:13,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:2}}>THE MONETARY PIPELINE · 2008 - PRESENT</div>
+            <div style={{fontSize:13,color:"#4b5563",marginBottom:8}}>Monthly data · ISM PMI (left axis) · 10Y Treasury yield 2-year change (right axis, inverted)</div>
             <div style={{display:"flex",flexWrap:"wrap",gap:16,marginBottom:8}}>
               {HIST_LEGEND.map(l=>(<span key={l.label} style={{display:"flex",alignItems:"center",gap:6,fontSize:10,color:"#4b5563"}}><svg width="28" height="10"><line x1="0" y1="5" x2="28" y2="5" stroke={l.color} strokeWidth={l.dash?"1.5":"2"} strokeDasharray={l.dash||"none"}/></svg>{l.label}</span>))}
             </div>
@@ -168,10 +165,10 @@ export default function App(){
             </div>
           </div>
           <div style={{borderLeft:"3px solid #0a0a0a",padding:"12px 16px",background:"#f9fafb",marginBottom:24}}>
-            <div style={{fontSize:12,lineHeight:1.75}}><strong>Core finding:</strong> Every PMI direction change is predicted by the red line (10Y yield 2-year change, advanced 18 months) — without exception across 5 administrations and 18 years. Inauguration day is a vertical line on this chart, nothing more.</div>
+            <div style={{fontSize:13,lineHeight:1.75}}><strong>Core finding:</strong> Every PMI direction change is predicted by the red line (10Y yield 2-year change, advanced 18 months) — without exception across 5 administrations and 18 years. Inauguration day is a vertical line on this chart, nothing more.</div>
           </div>
           <div>
-            <div style={{fontSize:9,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:12}}>CASE STUDIES · CLICK TO EXPAND</div>
+            <div style={{fontSize:13,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:12,marginTop:40}}>PRESIDENTIALCASE STUDIES · CLICK TO EXPAND</div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:10}}>
               {CASES.map(cs=>(<div key={cs.id} onClick={()=>setCase(activeCase===cs.id?null:cs.id)} style={{border:activeCase===cs.id?"1.5px solid #0a0a0a":"1px solid #e5e7eb",borderRadius:2,padding:"12px",cursor:"pointer",background:activeCase===cs.id?"#f9fafb":"#fff"}}>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:6}}>
@@ -187,9 +184,9 @@ export default function App(){
 
       {nav==="forecast"&&(
         <div style={{padding:"24px 32px"}}>
-          <div style={{fontSize:9,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:3}}>PMI SCENARIO FORECAST · 2026-2027</div>
-          <div style={{fontSize:11,color:"#4b5563",marginBottom:18,maxWidth:560}}>175bps of Fed cuts (Sep-Dec 2025) delivered the pipeline-predicted V-shape (Dec-25 trough 47.9 to Mar-26: 52.3). Forward trajectory determined by three policy variables.</div>
-          <div style={{display:"grid",gridTemplateColumns:"196px 1fr",gap:24,alignItems:"start"}}>
+          <div style={{fontSize:13,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:3,textAlign:"center"}}>PMI SCENARIO FORECAST · 2026-2027</div>
+          <div style={{fontSize:13,color:"#4b5563",textAlign:"center",margin:"0 auto 18px auto",whiteSpace:"nowrap"}}>175bps of Fed cuts (Sep 2025-Dec 2025) delivered the pipeline-predicted V-shape (Dec-25 trough 47.9 to Mar-26: 52.3). Forward trajectory determined by three policy variables.</div>
+          <div style={{display:"grid",gridTemplateColumns:"260px 1fr",gap:40,alignItems:"start"}}>
             <div>
               <TogRow label="Tariff Policy" opts={T_OPTS} val={tariff} set={setTariff}/>
               <TogRow label="Inflation Path" opts={I_OPTS} val={inflation} set={setInf}/>
@@ -200,21 +197,21 @@ export default function App(){
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:5,marginBottom:10}}>
                   {[{l:"PMI Range",v:scen.range},{l:"Joint Prob.",v:"~"+prob+"%"},{l:"End-2027",v:endPMI.toFixed(1)},{l:"Net Shock",v:(total>=0?"+":"")+total.toFixed(1)+" pts"}].map(c=>(<div key={c.l} style={{background:"rgba(255,255,255,0.7)",borderRadius:2,padding:"6px 8px",border:"1px solid #e5e7eb"}}><div style={{fontSize:9,color:"#6b7280",fontWeight:600}}>{c.l}</div><div style={{fontSize:14,fontWeight:700}}>{c.v}</div></div>))}
                 </div>
-                {[{l:"Tariff",v:tD},{l:"Inflation",v:iD},{l:"Fed",v:fD}].map(d=>{const bc=d.v>0?"#1B5E20":d.v<0?"#B71C1C":"#6b7280";return(<div key={d.l} style={{marginBottom:5}}><div style={{display:"flex",justifyContent:"space-between",fontSize:10,marginBottom:2}}><span style={{color:"#6b7280",fontWeight:600}}>{d.l}</span><span style={{color:bc,fontWeight:700}}>{d.v>0?"+":""}{d.v.toFixed(1)} pts</span></div><div style={{height:3,background:"#e5e7eb",borderRadius:2}}><div style={{height:"100%",width:Math.abs(d.v)/5*100+"%",background:bc,borderRadius:2,transition:"width 0.3s"}}/></div></div>);})}
+                {[{l:"Tariff",v:tD},{l:"Inflation",v:iD},{l:"Fed",v:fD}].map(d=>{const bc=d.v>0?"#1B5E20":d.v<0?"#B71C1C":"#6b7280";return(<div key={d.l} style={{marginBottom:5}}><div style={{display:"flex",justifyContent:"space-between",fontSize:13,marginBottom:2}}><span style={{color:"#6b7280",fontWeight:600}}>{d.l}</span><span style={{color:bc,fontWeight:700}}>{d.v>0?"+":""}{d.v.toFixed(1)} pts</span></div><div style={{height:3,background:"#e5e7eb",borderRadius:2}}><div style={{height:"100%",width:Math.abs(d.v)/5*100+"%",background:bc,borderRadius:2,transition:"width 0.3s"}}/></div></div>);})}
               </div>
             </div>
             <div>
               <div style={{display:"flex",gap:16,marginBottom:7,fontSize:10,color:"#4b5563"}}>
                 {[{c:"#1565C0",l:"Historical PMI",d:false},{c:scen.c,l:"Forecast: "+scen.name,d:true}].map(lg=>(<span key={lg.l} style={{display:"flex",alignItems:"center",gap:4}}><svg width="20" height="6"><line x1="0" y1="3" x2="20" y2="3" stroke={lg.c} strokeWidth="2" strokeDasharray={lg.d?"5 3":"none"}/></svg>{lg.l}</span>))}
               </div>
-              <div style={{border:"1px solid #e5e7eb",height:230,marginBottom:14}}>
+              <div style={{border:"1px solid #e5e7eb",height:260,marginBottom:14}}>
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={chartData} margin={{top:8,right:12,bottom:30,left:10}}>
                     <CartesianGrid strokeDasharray="2 4" stroke="#f3f4f6" vertical={false}/>
                     <XAxis dataKey="t" tick={{fontSize:8,fill:"#9ca3af"}} tickLine={false} axisLine={{stroke:"#e5e7eb"}} interval={4} angle={-35} textAnchor="end" height={36}/>
-                    <YAxis domain={[42,62]} ticks={[44,47,50,53,56,59]} tick={{fontSize:8,fill:"#9ca3af"}} tickLine={false} axisLine={false} width={24}/>
+                    <YAxis domain={[44,60]} ticks={[47,50,53,56,59]} tick={{fontSize:8,fill:"#9ca3af"}} tickLine={false} axisLine={false} width={24}/>
                     <Tooltip content={<FcastTip/>}/>
-                    <ReferenceLine y={50} stroke="#9ca3af" strokeDasharray="4 4" strokeWidth={0.8} label={{value:"50",position:"insideLeft",fontSize:8,fill:"#9ca3af",dy:-5}}/>
+                    <ReferenceLine y={50} stroke="#9ca3af" strokeDasharray="4 4" strokeWidth={0.8}/>
                     <ReferenceLine x="May-26" stroke="#7c3aed" strokeDasharray="3 3" strokeWidth={1} label={{value:"Warsh",position:"top",fontSize:8,fill:"#7c3aed"}}/>
                     <ReferenceLine x="Jul-26" stroke="#b45309" strokeDasharray="3 3" strokeWidth={1} label={{value:"Tariff fork",position:"top",fontSize:8,fill:"#b45309"}}/>
                     <Line dataKey="h" stroke="#1565C0" strokeWidth={2} dot={false} connectNulls={false} isAnimationActive={false}/>
@@ -236,9 +233,9 @@ export default function App(){
                 </div>
               </div>
               <div>
-                <div style={{fontSize:9,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:8}}>THEMATIC ANALYSIS MATRIX</div>
+                <div style={{fontSize:13,letterSpacing:3,fontWeight:700,color:"#6b7280",marginBottom:8}}>THEMATIC ANALYSIS MATRIX</div>
                 <table style={{width:"100%",borderCollapse:"collapse",fontSize:10}}>
-                  <thead><tr style={{background:"#0a0a0a",color:"#fff"}}>{["THEME","STATUS","KEY DRIVERS","TAIL RISK"].map(h=>(<th key={h} style={{padding:"6px 9px",textAlign:"left",fontWeight:700,width:h==="THEME"?"14%":h==="STATUS"?"10%":h==="KEY DRIVERS"?"48%":"28%"}}>{h}</th>))}</tr></thead>
+                  <thead><tr style={{background:"#0a0a0a",color:"#fff"}}>{["THEME","STATUS","KEY DRIVERS","TAIL RISK"].map(h=>(<th key={h} style={{padding:"6px 9px",textAlign:"center",fontWeight:700,width:h==="THEME"?"14%":h==="STATUS"?"10%":h==="KEY DRIVERS"?"48%":"28%"}}>{h}</th>))}</tr></thead>
                   <tbody>{themes.map((row,i)=>(<tr key={row.theme} style={{background:i%2===0?"#f9fafb":"#fff",borderBottom:"1px solid #e5e7eb"}}><td style={{padding:"7px 9px",fontWeight:700,verticalAlign:"top"}}>{row.theme}</td><td style={{padding:"7px 9px",verticalAlign:"top"}}><span style={{fontWeight:700,color:row.statusC,fontSize:9,background:row.statusC+"11",padding:"2px 5px",borderRadius:2,whiteSpace:"nowrap"}}>{row.status}</span></td><td style={{padding:"7px 8px",color:"#374151",verticalAlign:"top",lineHeight:1.55}}>{row.drivers}</td><td style={{padding:"7px 8px",color:"#6b7280",verticalAlign:"top",lineHeight:1.55,fontStyle:"italic"}}>{row.risk}</td></tr>))}</tbody>
                 </table>
               </div>
