@@ -204,7 +204,7 @@ export default function App(){
               <div style={{display:"flex",gap:16,marginBottom:7,fontSize:10,color:"#4b5563"}}>
                 {[{c:"#1565C0",l:"Historical PMI",d:false},{c:scen.c,l:"Forecast: "+scen.name,d:true}].map(lg=>(<span key={lg.l} style={{display:"flex",alignItems:"center",gap:4}}><svg width="20" height="6"><line x1="0" y1="3" x2="20" y2="3" stroke={lg.c} strokeWidth="2" strokeDasharray={lg.d?"5 3":"none"}/></svg>{lg.l}</span>))}
               </div>
-              <div style={{border:"1px solid #e5e7eb",height:260,marginBottom:14}}>
+              <div style={{border:"1px solid #e5e7eb",height:260,marginBottom:14,maxWidth:"100%",overflow:"hidden"}}>
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={chartData} margin={{top:8,right:12,bottom:30,left:10}}>
                     <CartesianGrid strokeDasharray="2 4" stroke="#f3f4f6" vertical={false}/>
@@ -237,7 +237,7 @@ export default function App(){
                 <div className="mobile-table-wrap">
                 <table style={{width:"100%",borderCollapse:"collapse",fontSize:10}}>
                   <thead><tr style={{background:"#0a0a0a",color:"#fff"}}>{["THEME","STATUS","KEY DRIVERS","TAIL RISK"].map(h=>(<th key={h} style={{padding:"6px 9px",textAlign:"center",fontWeight:700,width:h==="THEME"?"14%":h==="STATUS"?"10%":h==="KEY DRIVERS"?"48%":"28%"}}>{h}</th>))}</tr></thead>
-                  <tbody>{themes.map((row,i)=>(<tr key={row.theme} style={{background:i%2===0?"#f9fafb":"#fff",borderBottom:"1px solid #e5e7eb"}}><td style={{padding:"7px 9px",fontWeight:700,verticalAlign:"top"}}>{row.theme}</td><td style={{padding:"7px 9px",verticalAlign:"top"}}><span style={{fontWeight:700,color:row.statusC,fontSize:9,background:row.statusC+"11",padding:"2px 5px",borderRadius:2,whiteSpace:"nowrap"}}>{row.status}</span></td><td style={{padding:"7px 8px",color:"#374151",verticalAlign:"top",lineHeight:1.55}}>{row.drivers}</td><td style={{padding:"7px 8px",color:"#6b7280",verticalAlign:"top",lineHeight:1.55,fontStyle:"italic"}}>{row.risk}</td></tr>))}</tbody>
+                  <tbody>{themes.map((row,i)=>(<tr key={row.theme} style={{background:i%2===0?"#f9fafb":"#fff",borderBottom:"1px solid #e5e7eb"}}><td style={{padding:"7px 9px",fontWeight:700,verticalAlign:"top"}}>{row.theme}</td><td style={{padding:"7px 9px",verticalAlign:"top"}}><span style={{fontWeight:700,color:row.statusC,fontSize:9,background:row.statusC+"11",padding:"2px 5px",borderRadius:2}}>{row.status}</span></td><td style={{padding:"7px 8px",color:"#374151",verticalAlign:"top",lineHeight:1.55}}>{row.drivers}</td><td style={{padding:"7px 8px",color:"#6b7280",verticalAlign:"top",lineHeight:1.55,fontStyle:"italic"}}>{row.risk}</td></tr>))}</tbody>
                 </table>
               </div>
             </div>
