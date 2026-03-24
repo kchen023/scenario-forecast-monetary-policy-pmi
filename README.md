@@ -1,4 +1,4 @@
-# Locked-In Legacies: How the 18-Month Monetary Lag Predetermines Presidential PMI Trajectories
+# Scenario Forecast: How the 18-Month Monetary Lag Predetermines Presidential PMI Trajectories
 
 **Live Dashboard →** [kchen023.github.io/pmi-dashboard](https://kchen023.github.io/pmi-dashboard/)
 
