@@ -1,6 +1,6 @@
 # Scenario Forecast: How the 18-Month Monetary Policy Lag Predetermines PMI Trajectories
 
-**Live Dashboard →** [kchen023.github.io/scenario-forecast-monetary-policy-pmi](https://kchen023.github.io/scenario-forecast-monetary-policy-pmi/)
+**Live Dashboard →** [kchen023.github.io/scenario-forecast-monetary-policy-pmi/](https://kchen023.github.io/scenario-forecast-monetary-policy-pmi/)
 
 ---
 
