@@ -51,7 +51,7 @@ When the Fed tightens (yield 2-year change rises), the advanced indicator turns 
 | **Obama II** (Jan 2013) | Neutral (~0 bps) | Stable 50–57, no swing | ✅ Confirmed — neutral pipeline, neutral PMI |
 | **Trump I** (Jan 2017) | Mild tightening (+50 bps) | 55–60 then declined to 47.8 | ✅ Confirmed — lagged tightening cleared by 2019 |
 | **Biden** (Jan 2021) | Peak easing → fastest tightening | 58.7 → 64.7 → 46.0 full round-trip | ✅ Confirmed — most complete experiment in dataset |
-| **Trump II** (Jan 2025) | Residual tightening, declining | 47.9 trough → 52.3 recovery | 🔄 Live — V-shape confirmed, forward path TBD |
+| **Trump II** (Jan 2025) | Residual tightening, declining | 47.9 trough → 54.0 (May-26, highest since 2022) | 🔄 Live — V-shape extending; forward path TBD |
 
 ### The Misattribution Problem
 
@@ -79,21 +79,21 @@ The dashboard's second section applies the framework forward, modeling Trump II'
 
 The 175bps of Fed cuts delivered in late 2025 represent a monetary easing pipeline already locked in — the base recovery signal is set. What the three variables determine is not *whether* PMI recovers, but *how far and how fast*:
 
-- **Tariffs** are the most powerful near-term disruptor: the 2025 effective tariff rate reached 16.8% (highest since 1947), creating simultaneous inflationary pressure and demand destruction — the only configuration capable of overriding the monetary pipeline (as COVID did in 2020)
+- **Tariffs** are the most powerful near-term disruptor. After the Supreme Court struck down the IEEPA tariffs (Feb 20, 2026), the administration imposed a 10% Section 122 surcharge that **expires July 24, 2026** and cannot be presidentially renewed; the wall is being rebuilt via Section 301/232. The effective rate has fallen to **~7.2%** from the 2025 peak. A tariff/energy shock is the configuration capable of overriding the monetary pipeline (as COVID did in 2020)
 - **Inflation** determines whether the Fed has room to complete its easing cycle or must reverse course
-- **Warsh** (nominated as Fed Chair, May 2026) introduces a new monetary reaction function — his inflation-first credibility stance vs. employment-prioritization materially shifts the forward pipeline
+- **Warsh** took office as Fed Chair on **May 15, 2026** and has held the funds rate at 3.5–3.75% — the May vote split 8–4, the most divided since 1992. With CPI back to a 3-year high (4.2%) on the Iran energy shock, markets have abandoned 2026 cuts and now price a possible **hike** late in the year, materially shifting the forward pipeline
 
 ### Scenario Matrix
 
 | Combination | PMI Range | Joint Probability |
 |---|---|---|
-| Exit + Converge + Dovish | 56–58 (Strong Upside) | ~6% |
-| Exit + Sticky + Neutral | 54–56 (Upside) | ~12% |
-| Renew + Sticky + Neutral | 51–54 (Base Case) | ~9% |
-| Renew + Rebound + Neutral | 48–51 (Downside) | ~4% |
-| Escalate + Rebound + Hawkish | 45–48 (Strong Downside) | ~1% |
+| Exit + Converge + Dovish | 56–58 (Strong Upside) | ~1% |
+| Exit + Sticky + Neutral | 54–56 (Upside) | ~7% |
+| Renew + Sticky + Neutral | 53–55 (Base Case) | ~11% |
+| Renew + Rebound + Neutral *(current default)* | 50–52 (Downside) | ~8% |
+| Escalate + Rebound + Hawkish | 45–48 (Strong Downside) | ~2% |
 
-*Joint probabilities computed as P(tariff) × P(inflation) × P(Fed). Judgmental estimates based on observable market and policy signals as of March 2026.*
+*Joint probabilities computed as P(tariff) × P(inflation) × P(Fed). Judgmental estimates based on observable market and policy signals as of June 2026.*
 
 ---
 
@@ -109,7 +109,7 @@ Reagan increased military spending by 43% — GDP share from 4.4% to 6.0% — ye
 
 | Series | Source | Transformation |
 |---|---|---|
-| ISM Manufacturing PMI | [ISM](https://www.ismworld.org) / [MacroMicro](https://en.macromicro.me) | Monthly level, Jan 2008–Mar 2026 |
+| ISM Manufacturing PMI | [ISM](https://www.ismworld.org) / [MacroMicro](https://en.macromicro.me) | Monthly level, Jan 2008–May 2026 |
 | 10-Year Treasury Yield | [FRED GS10](https://fred.stlouisfed.org/series/GS10) | 2-year change in bps: `GS10(t) − GS10(t−24)` |
 | Yield Pipeline (Advanced) | FRED GS10 | Same series, shifted forward 18 months: `grey(t−18)` |
 | Tariff Data | [Tax Foundation](https://taxfoundation.org) / [Yale Budget Lab](https://budgetlab.yale.edu) | Effective tariff rate, 2025–2026 |
@@ -138,7 +138,7 @@ This project draws on established macroeconomic literature:
 
 ## Disclaimer
 
-*This dashboard is built for educational and research purposes. All scenario probabilities are judgmental estimates based on publicly available data as of March 2026. Nothing here constitutes investment advice.*
+*This dashboard is built for educational and research purposes. All scenario probabilities are judgmental estimates based on publicly available data as of June 2026. Nothing here constitutes investment advice.*
 
 ---
 
